@@ -85,21 +85,18 @@ ListNode* GetNodeByIndex(ListNode* pHead, int index)
 //  parameters when calling this function
 ListNode* XthNodeFromEnd(ListNode* head, int& x /*to use recursive, this value needs to be changed*/)
 {
-    static ListNode* pNode = nullptr;
     if (head == nullptr)
     {   // start conting backword, need to clean the return value pNode
-        pNode = nullptr;
-        return head;
+        return nullptr;
     }
 
     ListNode* pTemp = XthNodeFromEnd(head->next, x);
-    if (pNode != nullptr)   // if the node has been found, return it
-        return pNode;
+    if (pTemp != nullptr)   // if the node has been found, return it
+        return pTemp;
     if (--x == 0)           // the node has not been found, need to count down
     {                       // here we go! we got it. need to store the node into
                             //  the return value
-        pNode = head;
-        return pNode;
+        return head;
     }
 
     // the node has not been found yet, return nullptr
